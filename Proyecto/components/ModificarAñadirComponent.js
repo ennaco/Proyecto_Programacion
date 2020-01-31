@@ -86,7 +86,7 @@ export default class ModificarAñadir extends Component{
       return(
         <View style={styles.posicion}>
             <View>
-              <Text>Registro</Text>
+              <Text>{this.props.text}</Text>
             </View>
             <View >
             <TextInput onChangeText={(text) => this.setState({nom: text})} placeholder={"Pon el nombre del Producto"} style={styles.title} keyboardType={"default"} value={this.state.nom}/>

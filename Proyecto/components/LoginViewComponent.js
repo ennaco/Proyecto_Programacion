@@ -18,7 +18,7 @@ export default class LoginViewComponent extends Component {
       email: '',
       contrasenya: '',
       documentJSON: [],///Aquí se guardan los usuarios recuperados de la bbdd
-      usuarioCorrecto: false,
+      usuarioCorrecto:false,
     }
     //Esto es necesario para poder usar las funciones.
    this.comprobarUsuario = this.comprobarUsuario.bind(this);
@@ -27,11 +27,15 @@ export default class LoginViewComponent extends Component {
   } 
 
 
+
+ 
   //Recupera SOLO los usuarios que coincidan con las variables pasadas por parámetros   
   comprobarUsuario() {
-    fetch(`http://localhost:3000/usuaris?userName=${this.state.email}&contrasenya=${this.state.contrasenya}`) 
+    this.setState({documentJSON: []})
+    fetch('http://localhost:3000/usuaris?userName='+this.state.email + '&contrasenya='+this.state.contrasenya) 
       .then((respuesta) => {
         if (respuesta.ok) {
+       
           return respuesta.json();
         } else {
           console.log("Error en la conexion con http://localhost:3000/usuaris/")
@@ -40,26 +44,38 @@ export default class LoginViewComponent extends Component {
       })
       .then(respostaJson => {
         this.setState({ documentJSON: respostaJson })
+        console.log(this.state.documentJSON)
+        this.usuarioCorrecto();
       })
       .catch(error => {
         console.log("Error de conexion: " + error);
         
       });
-
-      this.usuarioCorrecto();
-      this.cambioAInicio();
       
+
   }
+      
+      
+      
+     
+     
+      
+  
 
 //Cambia el estado de la variable si el array de usuarios contiene datos.
   usuarioCorrecto(){
-      if(this.state.documentJSON == []){
+    console.log(this.state.documentJSON)
+      if(this.state.documentJSON.length == 0){
           this.setState({usuarioCorrecto: false});
           alert("El JSON está vacio");
-      }else{
-          this.setState({usuarioCorrecto:  true});
+          console.log("1" + this.state.documentJSON.length)
+      }else if(this.state.documentJSON.length != 0 ){
+          this.setState({usuarioCorrecto: true});
           alert("El JSON está lleno");
-      }      
+          console.log("2" + this.state.documentJSON.length)
+          
+      }     
+
   }
 
   //Método para que devuelva a la página de REGISTRO
@@ -69,12 +85,7 @@ export default class LoginViewComponent extends Component {
 
   cambioAInicio(){
       //Si la variable usuarioCorrecto es TRUE, cambiamos a la pantalla de INICIO
-      if(this.usuarioCorrecto == true){
-          //Cambia a pantalla INICIO
-          alert("Has cambiado a la pantalla de Inicio");
-      }else{
-          alert("Usuario incorrecto");
-      }
+      
   }
 
   guardarEmail=(email)=>{
@@ -111,7 +122,7 @@ render() {
           onChangeText={this.guardarContrasenya} />
       </View>
 
-      <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.comprobarDatos}>
+      <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.comprobarUsuario}>
         <Text style={styles.loginText}>Entrar</Text>
       </TouchableHighlight>
 

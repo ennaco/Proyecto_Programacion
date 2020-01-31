@@ -11,6 +11,12 @@
       "userName": "jofrna",
       "contrasenya": "hola",
       "nom": "Jonh"
+    },
+    {
+      "idUsu": 3,
+      "userName": "3",
+      "contrasenya": "3",
+      "nom": "3"
     }
   ],
   "elements": [

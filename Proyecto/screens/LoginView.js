@@ -10,15 +10,15 @@ import {
   Alert
 } from 'react-native';
 import 'react-native-gesture-handler';
-import LoginViewComponent from './components/LoginViewComponent';
+import LoginViewComponent from '../components/LoginViewComponent';
 
 export default class LoginView extends Component {
 
 
   render() {
     return (
-      <View>
-      <LoginView />
+      <View style={{flex:1}}>
+      <LoginViewComponent />
       </View>
     );
   }
