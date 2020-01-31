@@ -33,10 +33,18 @@ export default class Inici extends React.Component {
     render(){
      return (
       
-       <View>
+       <View style={{flex:1}}>
+         <View style={{flex:1/12}}>
          <NombreUsuario />
+         </View>
+         <View style={{flex:10/12}}>
          <ListadoProductos />
-          <Button title={"AÑADIR"} onPress={()=>this.props.navigation.navigate("Añadir")}/>
+         </View>
+         <View style={{flex:1/12}}>
+         <Button title={"AÑADIR"} onPress={()=>this.props.navigation.navigate("Añadir")}/>
+         </View>
+          
+          
 
        </View>
        

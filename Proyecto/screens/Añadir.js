@@ -20,12 +20,12 @@ import { exportDefaultSpecifier, tsImportEqualsDeclaration } from '@babel/types'
 import 'react-native-gesture-handler';
 import ModificarAñadir from '../components/ModificarAñadirComponent'
 
-export default class Registro extends Component{
+export default class Añadir extends Component{
 
       render(){
         return(
           <View>
-            <ModificarAñadir />
+            <ModificarAñadir text={"Añadir"}/>
           </View>
     
         )
