@@ -66,13 +66,11 @@ export default class LoginViewComponent extends Component {
   usuarioCorrecto(){
     console.log(this.state.documentJSON)
       if(this.state.documentJSON.length == 0){
-          this.setState({usuarioCorrecto: false});
-          alert("El JSON está vacio");
-          console.log("1" + this.state.documentJSON.length)
+          alert("El usuario no existe");
+ 
       }else if(this.state.documentJSON.length != 0 ){
-          this.setState({usuarioCorrecto: true});
-          alert("El JSON está lleno");
-          console.log("2" + this.state.documentJSON.length)
+          this.props.inici({n:this.state.email})
+
           
       }     
 
@@ -130,7 +128,7 @@ render() {
         <Text>¿Has olvidado la contraseña?</Text>
       </TouchableHighlight>
 
-      <TouchableHighlight style={styles.buttonContainer} onPress={()=>"hola"}>
+      <TouchableHighlight style={styles.buttonContainer} onPress={this.props.registro}>
         <Text>Registrarse</Text>
       </TouchableHighlight>
     </View>

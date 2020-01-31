@@ -30,7 +30,7 @@ export default class NombreUsuario extends React.Component {
 
         return(
             <View>
-                <Text>Me da asco tu nombre</Text>
+    <Text>Me da asco tu nombre, {this.props.nom}</Text>
 
             </View>
             

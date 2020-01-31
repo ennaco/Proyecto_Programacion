@@ -25,7 +25,7 @@ export default class Añadir extends Component{
       render(){
         return(
           <View>
-            <ModificarAñadir text={"Añadir"}/>
+            <ModificarAñadir text={"Añadir"} producto={""}/>
           </View>
     
         )

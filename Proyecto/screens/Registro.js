@@ -10,7 +10,7 @@ export default class Registro extends Component{
 
   render(){
     return (
-      <View>
+      <View style={{flex:1}}>
         <RegistroComponent />
       </View>
     )

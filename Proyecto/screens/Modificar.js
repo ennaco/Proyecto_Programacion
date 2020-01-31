@@ -23,9 +23,11 @@ import ModificarAñadir from '../components/ModificarAñadirComponent'
 export default class Modificar extends Component{
 
       render(){
+        let x = this.props.navigation.getParam('hr')
         return(
           <View>
-            <ModificarAñadir text={"Modificar"}/>
+            
+            <ModificarAñadir text={"Modificar"} producto={x}/>
           </View>
     
         )

@@ -61,7 +61,7 @@ componentDidMount(){
                                                     }
                                                 }
             />
-            <Button title={"Modificar"} onPress={()=>this.props.navigation.navigate("Añadir")}
+            <Button title={"Modificar"} onPress={()=>this.props.mover({i:item})}
             />
             </View>
            

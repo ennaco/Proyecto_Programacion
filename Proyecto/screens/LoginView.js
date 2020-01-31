@@ -14,11 +14,20 @@ import LoginViewComponent from '../components/LoginViewComponent';
 
 export default class LoginView extends Component {
 
+  moveraInici=({n})=>{
+
+    this.props.navigation.navigate("Inici",{nusu:n})
+  }
+
+  moveraRegistro = () =>{
+    this.props.navigation.navigate("Registro")
+  }
 
   render() {
+    
     return (
       <View style={{flex:1}}>
-      <LoginViewComponent />
+      <LoginViewComponent inici={this.moveraInici} registro={this.moveraRegistro} />
       </View>
     );
   }

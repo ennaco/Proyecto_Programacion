@@ -31,7 +31,13 @@ export default class ModificarAñadir extends Component{
            
         }
     }
-
+    componentDidMount(){
+      if(this.props.producto != ""){
+        this.setState({nom:this.props.producto.nom})
+        this.setState({descripcio:this.props.producto.descripcio})
+        this.setState({id:this.props.producto.id})
+      }
+    }
     funciona = () => {
 
         
@@ -53,28 +59,58 @@ export default class ModificarAñadir extends Component{
         Alert.alert("Te falta poner: ",alert);
       }
       else{
-        Alert.alert("Se ha añadido a: ", this.state.nom)
-
-
-        fetch('http://localhost:3000/elements', {
-          method: 'POST',
-          headers: {
-            
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            id:"",
-            nom:this.state.nom,
-            descripcio:this.state.descripcio,
+        if(this.props.producto == ""){
+          fetch('http://localhost:3000/elements', {
+            method: 'POST',
+            headers: {
+              
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id:"",
+              nom:this.state.nom,
+              descripcio:this.state.descripcio,
+            })
           })
-        })
+          Alert.alert("Se ha añadido a: ", this.state.nom)
+            this.setState({
+             id:"",
+             nom:"",
+             descripcio:"",
+            }); 
+        }
+        else{
+          let x={
+            id:this.state.id,
+            nom:this.state.nom,
+            descripcio:this.state.descripcio
+          }
+          fetch('http://localhost:3000/elements/'+ x.id, {
+            method: 'PUT',
+            body: JSON.stringify(x),
+            headers: {
+              'Content-Type': 'application/json; charset=UTF-8'
+            }
+          })
+            .then((resposta) => {
+              if (resposta.ok) {
+                return resposta.json();
+              } else {
+                console.log("Error fent el PUT")
+              }
+            })
+            .then(respostaJson => {
+              console.log(respostaJson);
+              Alert.alert("Dades actualitzades correctament {" + x.id + "," + x.nom + "," + x.descripcio+ "}");
+            })
+            .catch(error => {
+              console.log("Error de xarxa: " + error);
+            })
+        }
         
         
-        this.setState({
-            id:"",
-            nom:"",
-            descripcio:"",
-    }); 
+        
+        
 
       }
     }

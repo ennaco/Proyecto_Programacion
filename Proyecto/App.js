@@ -30,15 +30,16 @@ import Registro from './screens/Registro'
 import Inici from './screens/Inici'
 import LoginView from './screens/LoginView'
 import Añadir from './screens/Añadir'
-
+import Modificar from './screens/Modificar'
 export const Paginas = createStackNavigator(
   {
     LoginView: {screen:LoginView},
     Inici:{screen: Inici},
     Registro:{screen: Registro},
-    Añadir:{screen:Añadir}
+    Añadir:{screen:Añadir},
+    Modificar:{screen:Modificar},
   },
-  {initialRouteName: 'Inici'},
+  {initialRouteName: 'LoginView'},
 );
 const AppContainer = createAppContainer(Paginas)
 

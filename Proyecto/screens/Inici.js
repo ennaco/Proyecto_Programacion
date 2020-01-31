@@ -13,6 +13,7 @@ import {
   ScrollView,
   View,
   Button,
+  FlatList,
   Text,
   StatusBar,
 } from 'react-native';
@@ -30,15 +31,24 @@ import ListadoProductos from '../components/ListadoComponent'
 
 export default class Inici extends React.Component {
  
+  MOVERSE=({i})=>{
+    console.log(i)
+    this.props.navigation.navigate("Modificar",{hr:i})
+  }
+
     render(){
+      let nombreUsu= this.props.navigation.getParam('nusu')
      return (
       
        <View style={{flex:1}}>
          <View style={{flex:1/12}}>
-         <NombreUsuario />
+         <NombreUsuario nom={nombreUsu}/>
          </View>
          <View style={{flex:10/12}}>
-         <ListadoProductos />
+           <ListadoProductos mover={this.MOVERSE} />
+         <View style={{backgroundColor:"yellow"}}>
+
+     </View>
          </View>
          <View style={{flex:1/12}}>
          <Button title={"AÑADIR"} onPress={()=>this.props.navigation.navigate("Añadir")}/>

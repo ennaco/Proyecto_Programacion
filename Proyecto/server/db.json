@@ -21,21 +21,6 @@
   ],
   "elements": [
     {
-      "id": 2,
-      "nom": "Fritos",
-      "descripcio": "Snack"
-    },
-    {
-      "id": 3,
-      "nom": "Arròs",
-      "descripcio": "Aliment bàsic"
-    },
-    {
-      "id": 4,
-      "nom": "Fruïta",
-      "descripcio": "Imprescindible a la dieta Mediterrània"
-    },
-    {
       "id": 6,
       "nom": "Pa",
       "descripcio": "Del Forn!!!"
@@ -49,6 +34,21 @@
       "id": 8,
       "nom": "ssss",
       "descripcio": "wr"
+    },
+    {
+      "id": 9,
+      "nom": "a",
+      "descripcio": "a"
+    },
+    {
+      "id": 10,
+      "nom": "manel",
+      "descripcio": "la come mucho"
+    },
+    {
+      "id": 11,
+      "nom": "safdAF",
+      "descripcio": "ASDSGF"
     }
   ]
 }
