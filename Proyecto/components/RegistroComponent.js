@@ -36,7 +36,7 @@ export default class RegistroComponent extends Component{
         this.setState({nom: name})
     }
 
-    comprobarDatos = ()=>{
+    anyadirYcomprobarDatos = ()=>{
         let msg = "";
         let valor = 0;
         if(this.state.userName == ""){
@@ -73,11 +73,16 @@ export default class RegistroComponent extends Component{
               }),
             }); 
 
+            
+            this.pasarLoginPantalla();
             console.log("HOLA ME CAGO EN DIOS");
           }
-
     }
 
+    pasarLoginPantalla(){
+      console.log('voy a pasar a la pantalla de Login');
+      this.props.navigation.navigate('LoginView');
+    }
 
 
     render(){
@@ -111,7 +116,6 @@ export default class RegistroComponent extends Component{
         )
     }
 }
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
