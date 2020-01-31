@@ -128,7 +128,7 @@ export default class ModificarAñadir extends Component{
             <TextInput onChangeText={(text) => this.setState({nom: text})} placeholder={"Pon el nombre del Producto"} style={styles.title} keyboardType={"default"} value={this.state.nom}/>
 
             <TextInput onChangeText={(text) => this.setState({descripcio: text})} placeholder={"Pon la descripcion del Producto"} style={styles.title} keyboardType={"default"} value={this.state.descripcio}/>
-            <Button title="Comprobar" onPress={this.funciona}/>
+            <Button color='green' title="Comprobar" onPress={this.funciona}/>
             </View>
               
               

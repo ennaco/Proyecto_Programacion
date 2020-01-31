@@ -32,27 +32,39 @@ constructor(props){
 
   //Obtener productos
 componentDidMount(){
-    fetch("http://localhost:3000/elements")
+  fetch("http://localhost:3000/elements")
     .then((response)=> response.json())
     .then((json) => {this.setState({usuarios: json})})
     .catch((error)=> Console.log(error))
   }
 
+componentDidUpdate(){
+  fetch("http://localhost:3000/elements")
+    .then((response)=> response.json())
+    .then((json) => {this.setState({usuarios: json})})
+    .catch((error)=> Console.log(error))
+}
+
 
  render(){
   return (
-   <View style={{backgroundColor:"yellow"}}>
+   <View style={{backgroundColor:"white"}}>
      <Text>Segona Pantalla</Text>
 
      <FlatList
         data={this.state.usuarios}
         renderItem={({ item }) => (
-            <View style={{borderColor: "blue", borderWidth:4, marginBottom:10, backgroundColor:"pink",marginRight:15, marginLeft:15, flex:1}} >
-            <View style={{flexDirection:"column"}}>
+            <View style={{borderColor: "black", borderWidth:4, marginBottom:10, backgroundColor:"white",marginRight:15, marginLeft:15, flex:1}} >
+            <View style={{flexDirection:"row"}}>
+              <View style={{flex:1/2}}>
                 <Text>{item.nom}</Text>
-            </View>
-            <Text>{item.descripcio}</Text>
-            <Button title={"Eliminar"} onPress={() =>{console.log("vaig a esborrar: "+item.id);
+                <Text></Text>
+                <Text>{item.descripcio}</Text>
+              </View>
+              <View style={{flex:1/2}}>
+                <View style={{borderBottomColor:'black',borderBottomWidth:1}}>
+              <Button title={"Eliminar"} color="green"  onPress={() =>{
+                                                        alert("vaig a esborrar: "+item.nom);
                                                         fetch('http://localhost:3000/elements/' + item.id, {
                                                         method: 'DELETE',
                                                         })
@@ -60,9 +72,16 @@ componentDidMount(){
                                                         .then(res => console.log(res))
                                                     }
                                                 }
+            /></View>
+            <View>
+            
+            <Button title={"Modificar"} color="green"  onPress={()=>this.props.mover({i:item})}
             />
-            <Button title={"Modificar"} onPress={()=>this.props.mover({i:item})}
-            />
+            </View>
+              </View>
+            </View>
+            
+            
             </View>
            
             

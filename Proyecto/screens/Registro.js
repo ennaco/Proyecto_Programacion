@@ -8,10 +8,14 @@ import RegistroComponent from '../components/RegistroComponent';
 
 export default class Registro extends Component{
 
+  
+  moveraLogin = () =>{
+    this.props.navigation.navigate("LoginView")
+  }
   render(){
     return (
       <View style={{flex:1}}>
-        <RegistroComponent />
+        <RegistroComponent login={this.moveraLogin}/>
       </View>
     )
   }

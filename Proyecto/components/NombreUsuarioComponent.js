@@ -26,17 +26,17 @@ import {
 
 export default class NombreUsuario extends React.Component {
 
-    render(){
+  render() {
 
-        return(
-            <View>
-    <Text>Me da asco tu nombre, {this.props.nom}</Text>
+    return (
+      <View>
+        <Text>Bienvenido, {this.props.nom}</Text>
 
-            </View>
-            
+      </View>
 
-        )
 
-    }
+    )
+
+  }
 
 }

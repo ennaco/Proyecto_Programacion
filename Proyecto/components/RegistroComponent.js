@@ -73,7 +73,9 @@ export default class RegistroComponent extends Component{
               }),
             }); 
 
-            console.log("HOLA ME CAGO EN DIOS");
+
+            alert("Se ha creado el usuario");
+            this.props.login();
           }
 
     }

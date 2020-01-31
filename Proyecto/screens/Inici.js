@@ -40,7 +40,7 @@ export default class Inici extends React.Component {
       let nombreUsu= this.props.navigation.getParam('nusu')
      return (
       
-       <View style={{flex:1}}>
+       <View style={{flex:1,backgroundColor:"white"}}>
          <View style={{flex:1/12}}>
          <NombreUsuario nom={nombreUsu}/>
          </View>
@@ -51,7 +51,7 @@ export default class Inici extends React.Component {
      </View>
          </View>
          <View style={{flex:1/12}}>
-         <Button title={"AÑADIR"} onPress={()=>this.props.navigation.navigate("Añadir")}/>
+         <Button color='green' title={"AÑADIR"} onPress={()=>this.props.navigation.navigate("Añadir")}/>
          </View>
           
           
