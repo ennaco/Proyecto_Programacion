@@ -23,6 +23,7 @@ import 'react-native-gesture-handler';
 export default class ModificarAñadir extends Component{
     constructor(props){
         super(props);
+        //creamos el state con las propiedades que necesitamos
         this.state={
             id:"",
             nom:"",
@@ -31,6 +32,10 @@ export default class ModificarAñadir extends Component{
            
         }
     }
+
+    //SI NO ESTÁ VACÍO, VAMOS A AÑADIR
+    //dependiendo desde dónde entramos, ya sea modificar o añadir el prop de producto será diferente. Si es añadir estará vacío y si es 
+    //modificar se le aplicarán los valores del estado con los valores del prop producto (significa que está rellenado)
     componentDidMount(){
       if(this.props.producto != ""){
         this.setState({nom:this.props.producto.nom})
@@ -38,6 +43,8 @@ export default class ModificarAñadir extends Component{
         this.setState({id:this.props.producto.id})
       }
     }
+
+    //comprobamos que todo está rellenado
     funciona = () => {
 
         
@@ -58,6 +65,7 @@ export default class ModificarAñadir extends Component{
      if(alert != "" ){
         Alert.alert("Te falta poner: ",alert);
       }
+      //dependiendo de si el prop.producto está lleno o vacío se detectará de si se quiere añadir o modificar. VACÍO=AÑADIR / LLENO=MODIFICAR
       else{
         if(this.props.producto == ""){
           fetch('http://localhost:3000/elements', {
@@ -127,11 +135,15 @@ export default class ModificarAñadir extends Component{
             <View >
             <TextInput onChangeText={(text) => this.setState({nom: text})} placeholder={"Pon el nombre del Producto"} style={styles.title} keyboardType={"default"} value={this.state.nom}/>
 
-            <TextInput onChangeText={(text) => this.setState({descripcio: text})} placeholder={"Pon la descripcion del Producto"} style={styles.title} keyboardType={"default"} value={this.state.descripcio}/>
-            <Button color='green' title="Comprobar" onPress={this.funciona}/>
+            <TextInput onChangeText={(text) => this.setState({descripcio: text})} placeholder={"Pon la descripcion del Producto"} 
+            style={styles.title} keyboardType={"default"} value={this.state.descripcio}/>
+            <View style={{borderBottomColor:'black',borderBottomWidth:1}}>
+              <Button color='green' title="Comprobar" onPress={this.funciona}/> 
             </View>
-              
-              
+            <View>
+              <Button color='green' title="Cancelar" onPress={()=>this.props.inici()} />
+            </View>
+            </View>
         </View>
   
   
@@ -140,6 +152,11 @@ export default class ModificarAñadir extends Component{
   
   }
 
+  //con el botón Cancelar llamamos a la función que le hemos pasado desde Añadir/Modificar para volver al inici si queremos cancelar el proceso
+
+
+
+  
   const styles = StyleSheet.create({
     container: {
       borderRadius: 3,

@@ -26,7 +26,8 @@ import {
 export default class ListadoProductos extends Component {
 constructor(props){
   super(props)
-  this.state={usuarios:undefined}
+  //nos creamos un objeto productos que ahora estará vacío
+  this.state={productos:undefined}
 }
 
 
@@ -34,14 +35,15 @@ constructor(props){
 componentDidMount(){
   fetch("http://localhost:3000/elements")
     .then((response)=> response.json())
-    .then((json) => {this.setState({usuarios: json})})
+    .then((json) => {this.setState({productos: json})})
     .catch((error)=> Console.log(error))
   }
 
+  //para que cada vez que modifiquemos o eliminemos un producto se actualice automaticamente
 componentDidUpdate(){
   fetch("http://localhost:3000/elements")
     .then((response)=> response.json())
-    .then((json) => {this.setState({usuarios: json})})
+    .then((json) => {this.setState({productos: json})})
     .catch((error)=> Console.log(error))
 }
 
@@ -49,10 +51,8 @@ componentDidUpdate(){
  render(){
   return (
    <View style={{backgroundColor:"white"}}>
-     <Text>Segona Pantalla</Text>
-
      <FlatList
-        data={this.state.usuarios}
+        data={this.state.productos}
         renderItem={({ item }) => (
             <View style={{borderColor: "black", borderWidth:4, marginBottom:10, backgroundColor:"white",marginRight:15, marginLeft:15, flex:1}} >
             <View style={{flexDirection:"row"}}>
@@ -93,4 +93,5 @@ componentDidUpdate(){
 };
 }
 
+//en el Boton de Modificar haremos uso del prop que le hemos pasado por la pantalla de Inici y la variable i obtendrá todo el item concreto del flatList 
 

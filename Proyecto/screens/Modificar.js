@@ -22,12 +22,18 @@ import ModificarAñadir from '../components/ModificarAñadirComponent'
 
 export default class Modificar extends Component{
 
+  //función creada para mover a la pagina de Inici que se le pasará como prop a ModificarAñadir  
+  moveraInici = () =>{
+    this.props.navigation.navigate("Inici")
+  }
       render(){
+        //la variable hr la obtenemos en el listado de los componentes al pulsar sobre el botón Modificar y será un objeto que se lo asignamos a x 
         let x = this.props.navigation.getParam('hr')
+
         return(
           <View>
             
-            <ModificarAñadir text={"Modificar"} producto={x}/>
+            <ModificarAñadir text={"Modificar"} producto={x} inici={this.moveraInici}/>
           </View>
     
         )
@@ -35,3 +41,4 @@ export default class Modificar extends Component{
     
     }
 
+//le pasamos al prop producto la variable x que en este caso es el objeto que queremos modificar y al prop inici la función de mover a inici

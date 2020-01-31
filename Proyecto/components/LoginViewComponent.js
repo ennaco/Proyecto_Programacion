@@ -14,16 +14,17 @@ export default class LoginViewComponent extends Component {
 
   constructor(props) {
     super(props);
+
+    //creamos el estado donde se guardarán los datos. 
     this.state = {
       email: '',
       contrasenya: '',
       documentJSON: [],///Aquí se guardan los usuarios recuperados de la bbdd
-      usuarioCorrecto:false,
     }
     //Esto es necesario para poder usar las funciones.
    this.comprobarUsuario = this.comprobarUsuario.bind(this);
    this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
-   this.cambioAInicio =  this.cambioAInicio.bind(this);
+
   } 
 
 
@@ -31,7 +32,9 @@ export default class LoginViewComponent extends Component {
  
   //Recupera SOLO los usuarios que coincidan con las variables pasadas por parámetros   
   comprobarUsuario() {
+    //cada vez que comprobemos el usuario, el documentJson será vaciado a través del setState por precaución 
     this.setState({documentJSON: []})
+    //este fecth nos permite comprobar si el usuario existe pasandole el email y la contraseña
     fetch('http://localhost:3000/usuaris?userName='+this.state.email + '&contrasenya='+this.state.contrasenya) 
       .then((respuesta) => {
         if (respuesta.ok) {
@@ -43,8 +46,10 @@ export default class LoginViewComponent extends Component {
         }
       })
       .then(respostaJson => {
+        //asignamos la respuesta al documentJson
         this.setState({ documentJSON: respostaJson })
-        console.log(this.state.documentJSON)
+
+        //llamos a la función usuario correcto para finalizar la llamada
         this.usuarioCorrecto();
       })
       .catch(error => {
@@ -55,20 +60,19 @@ export default class LoginViewComponent extends Component {
 
   }
       
-      
-      
-     
-     
-      
-  
-
 //Cambia el estado de la variable si el array de usuarios contiene datos.
+//Comprobamos que el documentJson contiene datos ya que si no contiene significa que o que no existe o se ha errado en la inserción de valores
   usuarioCorrecto(){
-    console.log(this.state.documentJSON)
       if(this.state.documentJSON.length == 0){
           alert("El usuario no existe");
  
       }else if(this.state.documentJSON.length != 0 ){
+        //si el usuario existe la longitud del array será mayor de 0 y le asignamos con el prop que le hemos pasado por
+        //loginView que el valor n (lo que obtiene la función) es igual al estado del email. 
+        /*moveraInici=({n})=>{
+
+          this.props.navigation.navigate("Inici",{nusu:n})
+        }*/
           this.props.inici({n:this.state.email})
 
           
@@ -76,19 +80,11 @@ export default class LoginViewComponent extends Component {
 
   }
 
-  //Método para que devuelva a la página de REGISTRO
-  cambioARegistro(){
-      //hay que hacerlo
-  }
-
-  cambioAInicio(){
-      //Si la variable usuarioCorrecto es TRUE, cambiamos a la pantalla de INICIO
-      
-  }
-
+  //función para guardar el email pasado por parámetro
   guardarEmail=(email)=>{
     this.setState({email:email})
   }
+  //función para guardar el password pasado por parámetro
   guardarContrasenya=(contrasenya)=>{
     this.setState({contrasenya:contrasenya})
   }
@@ -128,6 +124,7 @@ render() {
         <Text>¿Has olvidado la contraseña?</Text>
       </TouchableHighlight>
 
+      
       <TouchableHighlight style={styles.buttonContainer} onPress={this.props.registro}>
         <Text>Registrarse</Text>
       </TouchableHighlight>
@@ -136,6 +133,10 @@ render() {
   );
 }
   }
+
+//en el Boton registrarse le pasamos el prop que creamos en la screen LoginView para que pueda navegar a la pantalla de navegación (this.props.registro)
+
+
 
 const styles = StyleSheet.create({
   container: {

@@ -26,6 +26,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+//importamos los componentes creados en la carpeta screens
 import Registro from './screens/Registro'
 import Inici from './screens/Inici'
 import LoginView from './screens/LoginView'
@@ -39,14 +40,17 @@ export const Paginas = createStackNavigator(
     Añadir:{screen:Añadir},
     Modificar:{screen:Modificar},
   },
+  //la ruta inicial será el componente LoginView
   {initialRouteName: 'LoginView'},
 );
+
+//creamos el appcontainer que en la pantalla app se vayan mezclando todas las pantallas mientras realizamos la navegación
 const AppContainer = createAppContainer(Paginas)
 
 export default class App extends React.Component {
   render (){
     return(
-
+        //AppContainer contiene todas las screens q hemos creado
         <AppContainer />
     
     )

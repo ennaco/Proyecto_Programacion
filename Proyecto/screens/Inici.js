@@ -31,15 +31,18 @@ import ListadoProductos from '../components/ListadoComponent'
 
 export default class Inici extends React.Component {
  
+  //creamos la función Moverse que se lo pasaremos al componente hijo ListadoProductos como un prop que de éste obtendrá la variable i
+  //que se la pasará a modificar con el nombre de hr
   MOVERSE=({i})=>{
-    console.log(i)
+   
     this.props.navigation.navigate("Modificar",{hr:i})
   }
 
     render(){
+      //creamos una variable que recibirá lo que vale nusu que se obtiene por la función que hemos visto en LoginView
       let nombreUsu= this.props.navigation.getParam('nusu')
+
      return (
-      
        <View style={{flex:1,backgroundColor:"white"}}>
          <View style={{flex:1/12}}>
          <NombreUsuario nom={nombreUsu}/>
@@ -53,9 +56,6 @@ export default class Inici extends React.Component {
          <View style={{flex:1/12}}>
          <Button color='green' title={"AÑADIR"} onPress={()=>this.props.navigation.navigate("Añadir")}/>
          </View>
-          
-          
-
        </View>
        
       

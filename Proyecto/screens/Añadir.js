@@ -22,10 +22,16 @@ import ModificarAñadir from '../components/ModificarAñadirComponent'
 
 export default class Añadir extends Component{
 
+  //creamos una función que nos permita la navegación a la pantalla de Inici
+  moveraInici = () =>{
+    this.props.navigation.navigate("Inici")
+  }
+
+  //le pasamos el prop con la función de moverInici y un prop de producto que está vacío. 
       render(){
         return(
           <View>
-            <ModificarAñadir text={"Añadir"} producto={""}/>
+            <ModificarAñadir text={"Añadir"} producto={""} inici={this.moveraInici}/>
           </View>
     
         )

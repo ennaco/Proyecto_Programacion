@@ -41,14 +41,15 @@
       "userName": "s",
       "contrasenya": "s",
       "nom": "s"
+    },
+    {
+      "id": 8,
+      "userName": "gracielayuju",
+      "contrasenya": "1234",
+      "nom": "graciela"
     }
   ],
   "elements": [
-    {
-      "id": 1,
-      "nom": "Portatil Roto",
-      "descripcio": "Lenovo"
-    },
     {
       "id": 2,
       "nom": "Sillas Florida",
@@ -58,6 +59,11 @@
       "id": 3,
       "nom": "AhoraSoluciones",
       "descripcio": "AhoraProblemas"
+    },
+    {
+      "id": 4,
+      "nom": "Lenovo 5",
+      "descripcio": "portatil súper guay. SSD"
     }
   ]
 }

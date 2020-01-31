@@ -15,7 +15,7 @@ export default class RegistroComponent extends Component{
     constructor(props){
         super(props)
 
-
+        //creamos los estados necesarios vacíos
         this.state={
             id: "", 
             userName: "",
@@ -24,6 +24,7 @@ export default class RegistroComponent extends Component{
         }
     }
 
+    //funciones para guardar 
     guardarUsuario=(usuario)=>{
         this.setState({userName: usuario})
     }
@@ -36,6 +37,7 @@ export default class RegistroComponent extends Component{
         this.setState({nom: name})
     }
 
+    //comprobar que todos los datos están rellenados y no están vacíos
     comprobarDatos = ()=>{
         let msg = "";
         let valor = 0;
@@ -57,6 +59,7 @@ export default class RegistroComponent extends Component{
         if(valor > 0 ){
             Alert.alert("Te falta poner: ",msg);
         }
+        //si todos los datos están rellenados realizamos el fetch
         else{
             fetch('http://localhost:3000/usuaris', {
               method: 'POST',
@@ -64,6 +67,7 @@ export default class RegistroComponent extends Component{
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
               },
+              //rellenamos el objeto json 
               body: JSON.stringify({
                 id: this.state.id, 
                 userName: this.state.userName,
@@ -73,8 +77,9 @@ export default class RegistroComponent extends Component{
               }),
             }); 
 
-
+            //avisamos de que se ha creado el usuario
             alert("Se ha creado el usuario");
+            //y una vez se ha registrado el usuario llamará la función de mover a login, en este caso a través de la prop que hemos creado en Login
             this.props.login();
           }
 

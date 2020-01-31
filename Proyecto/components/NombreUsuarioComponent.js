@@ -27,7 +27,7 @@ import {
 export default class NombreUsuario extends React.Component {
 
   render() {
-
+    //this.props.nom es lo que le pasamos a nusu en la pantalla Inici como prop  dentor del componente NombreUsuario <NombreUsuario nom={nombreUsu}/>
     return (
       <View>
         <Text>Bienvenido, {this.props.nom}</Text>
