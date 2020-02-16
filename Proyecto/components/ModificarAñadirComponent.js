@@ -33,9 +33,10 @@ export default class ModificarAñadir extends Component{
         }
     }
 
-    //SI NO ESTÁ VACÍO, VAMOS A AÑADIR
+    //SI ESTÁ VACÍO, VAMOS A AÑADIR
     //dependiendo desde dónde entramos, ya sea modificar o añadir el prop de producto será diferente. Si es añadir estará vacío y si es 
     //modificar se le aplicarán los valores del estado con los valores del prop producto (significa que está rellenado)
+    //vamos a modificar
     componentDidMount(){
       if(this.props.producto != ""){
         this.setState({nom:this.props.producto.nom})

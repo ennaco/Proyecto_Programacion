@@ -69,7 +69,7 @@ export default class RegistroComponent extends Component{
               },
               //rellenamos el objeto json 
               body: JSON.stringify({
-                id: this.state.id, 
+                id: '', 
                 userName: this.state.userName,
                 contrasenya: this.state.contrasenya,
                 nom: this.state.nom
@@ -106,6 +106,7 @@ export default class RegistroComponent extends Component{
                 </View>
                 <View style= {styles.inputContainer}>
                     <TextInput style={styles.inputs}
+                      secureTextEntry={true}
                     placeholder="Password" 
                     onChangeText={this.guardarPassword} />
                 </View>

@@ -30,7 +30,11 @@ export default class Añadir extends Component{
   //le pasamos el prop con la función de moverInici y un prop de producto que está vacío. 
       render(){
         return(
+          //padre a hijo es de props, el texto añadir es de padre a hijo y luego this.moveraInici es de hijo a padre
+          //cuando el hijo lo llama y el padre lo ejecuta por que si lo ejecuta directamente el hijo no funciona
+          // y cuando el hijo lo pasa el padre 
           <View>
+            
             <ModificarAñadir text={"Añadir"} producto={""} inici={this.moveraInici}/>
           </View>
     

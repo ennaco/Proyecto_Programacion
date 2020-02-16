@@ -21,16 +21,14 @@ export default class LoginViewComponent extends Component {
       contrasenya: '',
       documentJSON: [],///Aquí se guardan los usuarios recuperados de la bbdd
     }
-    //Esto es necesario para poder usar las funciones.
+    //Esto es necesario para poder usar las funciones, se puede poner la funcion flecha en comprobarUsuario y no hace falta poner eso
    this.comprobarUsuario = this.comprobarUsuario.bind(this);
    this.usuarioCorrecto = this.usuarioCorrecto.bind(this);
 
   } 
 
-
-
- 
   //Recupera SOLO los usuarios que coincidan con las variables pasadas por parámetros   
+  //Igual comprobarUsuario=()=>{} y seria lo mismo que pone arriba del bind();
   comprobarUsuario() {
     //cada vez que comprobemos el usuario, el documentJson será vaciado a través del setState por precaución 
     this.setState({documentJSON: []})

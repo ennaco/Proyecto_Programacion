@@ -47,14 +47,33 @@
       "userName": "gracielayuju",
       "contrasenya": "1234",
       "nom": "graciela"
+    },
+    {
+      "id": 9,
+      "userName": "grace",
+      "contrasenya": "123",
+      "nom": "Graciela"
+    },
+    {
+      "id": 10,
+      "userName": "grzava",
+      "contrasenya": "123",
+      "nom": "Graciela"
+    },
+    {
+      "id": 11,
+      "userName": "ju",
+      "contrasenya": "11",
+      "nom": "juan"
+    },
+    {
+      "id": 12,
+      "userName": "ju",
+      "contrasenya": "11",
+      "nom": "juan"
     }
   ],
   "elements": [
-    {
-      "id": 2,
-      "nom": "Sillas Florida",
-      "descripcio": "Naranjas, pata coja"
-    },
     {
       "id": 3,
       "nom": "AhoraSoluciones",
@@ -64,6 +83,11 @@
       "id": 4,
       "nom": "Lenovo 5",
       "descripcio": "portatil súper guay. SSD"
+    },
+    {
+      "id": 5,
+      "nom": "raton",
+      "descripcio": "negro"
     }
   ]
 }

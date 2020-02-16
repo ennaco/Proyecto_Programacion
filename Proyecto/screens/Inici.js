@@ -45,7 +45,8 @@ export default class Inici extends React.Component {
      return (
        <View style={{flex:1,backgroundColor:"white"}}>
          <View style={{flex:1/12}}>
-         <NombreUsuario nom={nombreUsu}/>
+         <Text>Bienvenido, {nombreUsu}</Text>
+        
          </View>
          <View style={{flex:10/12}}>
            <ListadoProductos mover={this.MOVERSE} />
